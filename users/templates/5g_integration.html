@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+
+    <!-- Centered Toggle Buttons -->
+    <div class="d-flex justify-content-center mb-4">
+        <button class="btn btn-outline-primary mx-2" id="btnPreCheck">Pre Check</button>
+        <button class="btn btn-outline-secondary mx-2" id="btnPostCheck">Post Check</button>
+    </div>
+
+    <!-- Upload Section (Hidden Initially) -->
+    <div id="uploadSection" class="card shadow p-4 mb-4 d-none">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h5 id="uploadTitle" class="mb-3 text-center fw-bold">Upload Section</h5>
+
+            <!-- Task ID -->
+            <div class="mb-3">
+                <label for="task_id" class="form-label">Task Id</label>
+                <input type="text" id="task_id" name="task_id" class="form-control" placeholder="Please select valid Task Id" required>
+            </div>
+
+            <!-- File Upload -->
+            <div class="mb-3 text-center border border-dashed p-4 rounded">
+                <p class="fw-bold" id="logLabel">Log Files</p>
+                <input type="file" name="log_file" id="log_file" class="form-control d-none" accept=".txt,.log" required>
+                <label for="log_file" class="btn btn-outline-primary">Browse Files</label>
+            </div>
+
+            <!-- Buttons -->
+            <div class="d-flex justify-content-center gap-3">
+                <button type="submit" class="btn btn-success">Upload Files</button>
+                <button type="button" class="btn btn-danger">Generate Report</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Table Section -->
+    <div class="card shadow">
+        <div class="card-body">
+            <!-- Filters -->
+            <form class="row g-3 mb-3">
+                <div class="col-md-3">
+                    <label for="circle" class="form-label">Select Circle</label>
+                    <select class="form-select" id="circle" name="circle">
+                        <option selected>Choose Circle</option>
+                        <option>AP</option>
+                        <option>TN</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="enm" class="form-label">Select ENM</label>
+                    <select class="form-select" id="enm" name="enm">
+                        <option selected>Choose ENM</option>
+                        <option>enm1</option>
+                        <option>enm2</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="activity" class="form-label">Activity Name</label>
+                    <select class="form-select" id="activity" name="activity">
+                        <option selected>Both</option>
+                        <option>Pre Check</option>
+                        <option>Post Check</option>
+                    </select>
+                </div>
+            </form>
+
+            <!-- Dummy Data Table -->
+            <table class="table table-bordered table-hover text-center">
+                <thead class="table-primary">
+                    <tr>
+                        <th>Task Id</th>
+                        <th>ENM</th>
+                        <th>CIRCLE</th>
+                        <th>ACTIVITY TYPE</th>
+                        <th>EMAIL</th>
+                        <th>TIMESTAMP</th>
+                        <th>DOWNLOAD</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>DY000025</td>
+                        <td>enmap5</td>
+                        <td>AP</td>
+                        <td>Pre Check</td>
+                        <td>shikhar.s@mcpsinc.com</td>
+                        <td>29-09-2025 11:46:42</td>
+                        <td><button class="btn btn-sm btn-primary">Download</button></td>
+                    </tr>
+                    <tr>
+                        <td>DY000024</td>
+                        <td>enmap2</td>
+                        <td>AP</td>
+                        <td>Pre Check</td>
+                        <td>amit.kumar8@ust.com</td>
+                        <td>29-09-2025 11:37:08</td>
+                        <td><button class="btn btn-sm btn-primary">Download</button></td>
+                    </tr>
+                    <tr>
+                        <td>DY000020</td>
+                        <td>enmap1</td>
+                        <td>AP</td>
+                        <td>Pre Check</td>
+                        <td>amit.kumar8@ust.com</td>
+                        <td>26-09-2025 11:39:58</td>
+                        <td><button class="btn btn-sm btn-primary">Download</button></td>
+                    </tr>
+                    <tr>
+                        <td>DY000019</td>
+                        <td>enmap1</td>
+                        <td>AP</td>
+                        <td>Pre Check</td>
+                        <td>Aashish.Sharma@ust.com</td>
+                        <td>26-09-2025 10:23:18</td>
+                        <td><button class="btn btn-sm btn-primary">Download</button></td>
+                    </tr>
+                    <tr>
+                        <td>DY000018</td>
+                        <td>enmap2</td>
+                        <td>AP</td>
+                        <td>Post Check</td>
+                        <td>amit.kumar8@ust.com</td>
+                        <td>23-09-2025 18:53:22</td>
+                        <td><button class="btn btn-sm btn-primary">Download</button></td>
+                    </tr>
+                    <tr>
+                        <td>DY000017</td>
+                        <td>enmap2</td>
+                        <td>AP</td>
+                        <td>Post Check</td>
+                        <td>amit.kumar8@ust.com</td>
+                        <td>23-09-2025 18:12:48</td>
+                        <td><button class="btn btn-sm btn-primary">Download</button></td>
+                    </tr>
+                    <tr>
+                        <td>DY000013</td>
+                        <td>enmap9</td>
+                        <td>AP</td>
+                        <td>Pre Check</td>
+                        <td>amit.kumar8@ust.com</td>
+                        <td>22-09-2025 03:17:06</td>
+                        <td><button class="btn btn-sm btn-primary">Download</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Script to Toggle Upload Section -->
+<script>
+document.getElementById("btnPreCheck").addEventListener("click", function () {
+    document.getElementById("uploadSection").classList.remove("d-none");
+    document.getElementById("uploadTitle").innerText = "Pre Check Upload";
+    document.getElementById("logLabel").innerText = "PreCheck Log Files";
+});
+
+document.getElementById("btnPostCheck").addEventListener("click", function () {
+    document.getElementById("uploadSection").classList.remove("d-none");
+    document.getElementById("uploadTitle").innerText = "Post Check Upload";
+    document.getElementById("logLabel").innerText = "PostCheck Log Files";
+});
+</script>
+{% endblock %}

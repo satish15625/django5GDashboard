@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-fluid">
+
+    <div class="row mb-4">
+        {% if request.user.is_superuser %}
+            <!-- Admin cards -->
+            <div class="col-md-3">
+                <div class="card bg-primary text-white p-3">
+                    <h5>Total Users</h5>
+                    <h3>{{ total_users }}</h3>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-success text-white p-3">
+                    <h5>Active Users</h5>
+                    <h3>{{ active_users }}</h3>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-secondary text-white p-3">
+                    <h5>Inactive Users</h5>
+                    <h3>{{ inactive_users }}</h3>
+                </div>
+            </div>
+        {% endif %}
+
+        <!-- Integration success card -->
+        <div class="col-md-3">
+            <div class="card bg-info text-white p-3">
+                <h5>Successful Integrations</h5>
+                <h3>{{ integration_count }}</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Integration table -->
+    <div class="card shadow-sm">
+        <div class="card-header bg-dark text-white">
+            <h5>Integrations</h5>
+        </div>
+        <div class="card-body table-responsive">
+            <!-- Dummy Data Table -->
+            <table class="table table-bordered table-hover text-center">
+                <thead class="table-primary">
+                    <tr>
+                        <th>Task Id</th>
+                        <th>ENM</th>
+                        <th>CIRCLE</th>
+                        <th>ACTIVITY TYPE</th>
+                        <th>EMAIL</th>
+                        <th>TIMESTAMP</th>
+                        <th>DOWNLOAD</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>DY000025</td>
+                        <td>enmap5</td>
+                        <td>AP</td>
+                        <td>Pre Check</td>
+                        <td>shikhar.s@mcpsinc.com</td>
+                        <td>29-09-2025 11:46:42</td>
+                        <td><button class="btn btn-sm btn-primary">Download</button></td>
+                    </tr>
+                    <tr>
+                        <td>DY000024</td>
+                        <td>enmap2</td>
+                        <td>AP</td>
+                        <td>Pre Check</td>
+                        <td>amit.kumar8@ust.com</td>
+                        <td>29-09-2025 11:37:08</td>
+                        <td><button class="btn btn-sm btn-primary">Download</button></td>
+                    </tr>
+                    <tr>
+                        <td>DY000020</td>
+                        <td>enmap1</td>
+                        <td>AP</td>
+                        <td>Pre Check</td>
+                        <td>amit.kumar8@ust.com</td>
+                        <td>26-09-2025 11:39:58</td>
+                        <td><button class="btn btn-sm btn-primary">Download</button></td>
+                    </tr>
+                    <tr>
+                        <td>DY000019</td>
+                        <td>enmap1</td>
+                        <td>AP</td>
+                        <td>Pre Check</td>
+                        <td>Aashish.Sharma@ust.com</td>
+                        <td>26-09-2025 10:23:18</td>
+                        <td><button class="btn btn-sm btn-primary">Download</button></td>
+                    </tr>
+                    <tr>
+                        <td>DY000018</td>
+                        <td>enmap2</td>
+                        <td>AP</td>
+                        <td>Post Check</td>
+                        <td>amit.kumar8@ust.com</td>
+                        <td>23-09-2025 18:53:22</td>
+                        <td><button class="btn btn-sm btn-primary">Download</button></td>
+                    </tr>
+                    <tr>
+                        <td>DY000017</td>
+                        <td>enmap2</td>
+                        <td>AP</td>
+                        <td>Post Check</td>
+                        <td>amit.kumar8@ust.com</td>
+                        <td>23-09-2025 18:12:48</td>
+                        <td><button class="btn btn-sm btn-primary">Download</button></td>
+                    </tr>
+                    <tr>
+                        <td>DY000013</td>
+                        <td>enmap9</td>
+                        <td>AP</td>
+                        <td>Pre Check</td>
+                        <td>amit.kumar8@ust.com</td>
+                        <td>22-09-2025 03:17:06</td>
+                        <td><button class="btn btn-sm btn-primary">Download</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
