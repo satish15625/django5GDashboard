@@ -1,6 +1,3 @@
-Django>=4.2,<5.0
-gunicorn>=21.2.0
-psycopg2-binary>=2.9.9   # For PostgreSQL
-dj-database-url>=2.1.0   # Parse DB URL (useful in deployment)
-whitenoise>=6.5.0        # Serve static files
-python-decouple>=3.8     # Manage environment variables
+django
+pillow
+
