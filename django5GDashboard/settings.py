@@ -23,8 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-+(uwk8*xh(pu^r$t=vo49@)#6f0(c83^h-vcg=*!wjvy3=_va9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
+#DEBUG = True
+#for production
+DEBUG - False
 # settings.py
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = ''
@@ -33,8 +34,15 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''  # Not your Gmail password, use App Password
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+import os
 
+CSRF_TRUSTED_ORIGINS = [
+    "django5gdashboard.onrender.com",   # your render domain
+]
 
+#ALLOWED_HOSTS = []
+
+#for Pruduction
 ALLOWED_HOSTS = [
     'django5gdashboard.onrender.com',
     #"localhost",              # Keep for local testing
