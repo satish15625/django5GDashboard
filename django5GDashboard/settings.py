@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-+(uwk8*xh(pu^r$t=vo49@)#6f0(c83^h-vcg=*!wjvy3=_va9
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = True
 #for production
-DEBUG - False
+#DEBUG - False
 # settings.py
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = ''
@@ -43,11 +43,11 @@ CSRF_TRUSTED_ORIGINS = [
 #ALLOWED_HOSTS = []
 
 #for Pruduction
-ALLOWED_HOSTS = [
-    'django5gdashboard.onrender.com',
-    #"localhost",              # Keep for local testing
-    #"127.0.0.1"
-]
+# ALLOWED_HOSTS = [
+#     'django5gdashboard.onrender.com',
+#     #"localhost",              # Keep for local testing
+#     #"127.0.0.1"
+# ]
 
 
 # Application definition
