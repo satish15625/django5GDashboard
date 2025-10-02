@@ -40,17 +40,21 @@ import os
 import os
 
 # Allow Render and local development
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1","django5gdashboard.onrender.com"]
 
 render_host = os.environ.get("django5gdashboard.onrender.com")
 if render_host:
     ALLOWED_HOSTS.append(render_host)
 
 # CSRF Trusted Origins (must include https://)
-CSRF_TRUSTED_ORIGINS = [
-    f"https://{render_host}"
-] if render_host else []
+# CSRF_TRUSTED_ORIGINS = [
+#     f"https://{render_host}"
+# ] if render_host else []
 
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://django5gdashboard.onrender.com"
+]
 
 
 # Application definition
