@@ -36,18 +36,21 @@ EMAIL_HOST_PASSWORD = ''  # Not your Gmail password, use App Password
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 import os
 
+
+import os
+
+# Allow Render and local development
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+
+render_host = os.environ.get("django5gdashboard.onrender.com")
+if render_host:
+    ALLOWED_HOSTS.append(render_host)
+
+# CSRF Trusted Origins (must include https://)
 CSRF_TRUSTED_ORIGINS = [
-    "django5gdashboard.onrender.com",   # your render domain
-]
+    f"https://{render_host}"
+] if render_host else []
 
-#ALLOWED_HOSTS = []
-
-#for Pruduction
-# ALLOWED_HOSTS = [
-#     'django5gdashboard.onrender.com',
-#     #"localhost",              # Keep for local testing
-#     #"127.0.0.1"
-# ]
 
 
 # Application definition
