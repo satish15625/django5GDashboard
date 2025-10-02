@@ -77,6 +77,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",  # 👈 add this
 ]
 
 ROOT_URLCONF = 'django5GDashboard.urls'
@@ -158,14 +159,20 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # settings.py
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
 
-STATIC_URL = '/static/'
 
 # URL where unauthenticated users will be redirected
 LOGIN_URL = 'login'
 
 # Optional: redirect after login
-LOGIN_REDIRECT_URL = 'dashboard'
+
+
+STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"   # 👈 this is required
+STATICFILES_DIRS = [BASE_DIR / "static"]  # only if you have a "static" folder in project
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
+
+# For production (Render + Whitenoise)
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
