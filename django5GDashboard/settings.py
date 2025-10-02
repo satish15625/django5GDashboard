@@ -168,3 +168,4 @@ LOGIN_URL = 'login'
 
 # Optional: redirect after login
 LOGIN_REDIRECT_URL = 'dashboard'
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
